@@ -62,18 +62,12 @@ namespace Cinegy.ImportTool.Device
 
         public void Attach(IMessenger rootMsgr)
         {
-            var explorerView = ServiceLocator.Current.GetInstance<ExplorerView>();
-
-            RegionManager.Current.Set(ViewRegions.Plugin, explorerView);
-
             rootMsgr.Register<GenericMessage<string>>(this,
                 arg =>
                 {
                     if (arg.Content != Name) return;
-                    else
-                    {
-                        RegionManager.Current.Set(ViewRegions.Plugin, ServiceLocator.Current.GetInstance<ExplorerView>());
-                    }
+
+                    RegionManager.Current.Set(ViewRegions.Plugin, ServiceLocator.Current.GetInstance<ExplorerView>());
                 },
                 true);
         }

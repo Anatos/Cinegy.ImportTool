@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 using Cinegy.ImportTool.Infrastructure.Model;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace Cinegy.ImportTool.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        private RelayCommand _command;
         private List<IImportMode> _modesProperty;
         private IImportMode _selectedModeProperty;
 
@@ -32,7 +35,14 @@ namespace Cinegy.ImportTool.ViewModel
 
         #region Properties
 
-        public IImportService ImportService { get; set; }
+        public ICommand Command => _command ?? (_command = new RelayCommand(() =>
+        {
+            foreach (var i in ServiceLocator.Current.GetAllInstances<IMessengerInjection>().ToList())
+                i.Attach(MessengerInstance);
+            MessengerInstance.Send(new GenericMessage<string>($"{_selectedModeProperty}"));
+        }));
+
+        public IImportService ImportService { get; }
 
         public List<IImportMode> Modes
         {

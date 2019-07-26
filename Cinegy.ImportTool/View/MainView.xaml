@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:ignore="http://www.galasoft.ch/ignore"
-        xmlns:infrastructure="clr-namespace:Cinegy.ImportTool.Infrastructure;assembly=Cinegy.ImportTool.Infrastructure"
+        xmlns:infr="clr-namespace:Cinegy.ImportTool.Infrastructure;assembly=Cinegy.ImportTool.Infrastructure"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:command="http://www.galasoft.ch/mvvmlight"
         Height="500"
         Width="1200"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
@@ -13,11 +15,18 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Skins/MainSkin.xaml" />
+                <!--<ResourceDictionary Source="../Skins/MainSkin.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <command:EventToCommand Command="{Binding Mode=OneWay, Path=Command}"
+                                PassEventArgsToCommand="False" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid x:Name="LayoutRoot"
           Background="DimGray">
         <Grid.RowDefinitions>
@@ -49,16 +58,10 @@
                           ItemsSource="{Binding Modes}"
                           SelectedItem="{Binding SelectMode, Mode=TwoWay}" />
             </StackPanel>
-
-
         </DockPanel>
 
-        <Grid Grid.Row="2">
-            <ContentControl Grid.Column="0"
-                            infrastructure:RegionManager.Region="{x:Static infrastructure:ViewRegions.Plugin}"
-                            Background="Tomato" />
-        </Grid>
-
+        <ContentControl Grid.Row="2"
+                        infr:RegionManager.Region="{x:Static infr:ViewRegions.Plugin}" />
 
         <TextBlock Grid.Row="4"
                    Margin="5"

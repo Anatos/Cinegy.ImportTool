@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
 using Cinegy.ImportTool.Infrastructure.Model;
 using GalaSoft.MvvmLight;
@@ -9,6 +9,8 @@ namespace Cinegy.ImportTool.Device.ViewModel
     public class ExplorerViewModel : ViewModelBase
     {
         private readonly IImportService _importService;
+
+        private List<IDevice> _itemSource = new List<IDevice>();
         private RelayCommand<object> _selectedCommand;
 
         #region Constructors
@@ -16,14 +18,23 @@ namespace Cinegy.ImportTool.Device.ViewModel
         public ExplorerViewModel(IImportService importService)
         {
             _importService = importService;
-            ItemsSource = new ObservableCollection<IDevice>();
         }
 
         #endregion
 
         #region Properties
 
-        public ObservableCollection<IDevice> ItemsSource { get; }
+        public List<IDevice> ItemsSource
+        {
+            get { return _itemSource; }
+            set
+            {
+                if (_itemSource == value) return;
+
+                _itemSource = value;
+                RaisePropertyChanged(nameof(ItemsSource));
+            }
+        }
 
         public ICommand SelectedCommand
         {
