@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinegy.ImportTool", "Cinegy.ImportTool\Cinegy.ImportTool.csproj", "{EC644B31-3DBC-48B0-BBF3-7EE6BC7CD5B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinegy.ImportTool.Infrastructure", "Cinegy.ImportTool.Infrastructure\Cinegy.ImportTool.Infrastructure.csproj", "{6972E2D2-F476-47B8-AF97-0D3175A2EEE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinegy.ImportTool.FileSystem", "Cinegy.ImportTool.Explorer\Cinegy.ImportTool.FileSystem.csproj", "{5649BC93-D05B-42EA-88E9-B66349BAB3A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{330D7F5C-59AB-4880-838B-FFD269AA190F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinegy.ImportTool.Device", "Cinegy.ImportTool.Device\Cinegy.ImportTool.Device.csproj", "{A0FE8365-EB22-4A3A-9EDB-3CDCDE1241F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC644B31-3DBC-48B0-BBF3-7EE6BC7CD5B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC644B31-3DBC-48B0-BBF3-7EE6BC7CD5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC644B31-3DBC-48B0-BBF3-7EE6BC7CD5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC644B31-3DBC-48B0-BBF3-7EE6BC7CD5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6972E2D2-F476-47B8-AF97-0D3175A2EEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6972E2D2-F476-47B8-AF97-0D3175A2EEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6972E2D2-F476-47B8-AF97-0D3175A2EEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6972E2D2-F476-47B8-AF97-0D3175A2EEE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5649BC93-D05B-42EA-88E9-B66349BAB3A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5649BC93-D05B-42EA-88E9-B66349BAB3A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5649BC93-D05B-42EA-88E9-B66349BAB3A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5649BC93-D05B-42EA-88E9-B66349BAB3A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0FE8365-EB22-4A3A-9EDB-3CDCDE1241F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0FE8365-EB22-4A3A-9EDB-3CDCDE1241F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0FE8365-EB22-4A3A-9EDB-3CDCDE1241F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0FE8365-EB22-4A3A-9EDB-3CDCDE1241F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5649BC93-D05B-42EA-88E9-B66349BAB3A7} = {330D7F5C-59AB-4880-838B-FFD269AA190F}
+		{A0FE8365-EB22-4A3A-9EDB-3CDCDE1241F4} = {330D7F5C-59AB-4880-838B-FFD269AA190F}
+	EndGlobalSection
+EndGlobal
