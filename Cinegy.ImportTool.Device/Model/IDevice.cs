@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Cinegy.ImportTool.Infrastructure;
+using Cinegy.ImportTool.Infrastructure.Model;
 
 namespace Cinegy.ImportTool.Device
 {

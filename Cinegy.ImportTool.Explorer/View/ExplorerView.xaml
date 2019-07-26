@@ -25,6 +25,8 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <TreeView ItemsSource="{Binding TreeViewModel.ItemsSource}">
@@ -59,5 +61,8 @@
             </i:Interaction.Triggers>
         </ListBox>
 
+        <Grid Grid.Column="4">
+            <Rectangle></Rectangle>
+        </Grid>
     </Grid>
 </UserControl>

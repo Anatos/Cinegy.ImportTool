@@ -1,5 +1,6 @@
-﻿using System.Windows.Input;
-using Cinegy.ImportTool.Infrastructure;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Cinegy.ImportTool.Infrastructure.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 
@@ -15,11 +16,14 @@ namespace Cinegy.ImportTool.Device.ViewModel
         public ExplorerViewModel(IImportService importService)
         {
             _importService = importService;
+            ItemsSource = new ObservableCollection<IDevice>();
         }
 
         #endregion
 
         #region Properties
+
+        public ObservableCollection<IDevice> ItemsSource { get; }
 
         public ICommand SelectedCommand
         {

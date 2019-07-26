@@ -4,7 +4,7 @@
     {
         #region Properties
 
-        int Length { get; }
+        long Length { get; }
         string Name { get; }
         TrackType Type { get; }
 

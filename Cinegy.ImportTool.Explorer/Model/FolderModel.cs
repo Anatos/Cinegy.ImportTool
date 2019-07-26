@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Threading;
 
@@ -35,9 +36,17 @@ namespace Cinegy.ImportTool.FileSystem.Model
         {
             DispatcherHelper.CheckBeginInvokeOnUI(() =>
             {
-                foreach (var directory in Directory.EnumerateDirectories())
+                try
                 {
-                    Children.Add(new FolderModel(directory));
+                    foreach (var directory in Directory.EnumerateDirectories())
+                    {
+                        Children.Add(new FolderModel(directory));
+                        Thread.Sleep(100);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
                 }
             });
         }

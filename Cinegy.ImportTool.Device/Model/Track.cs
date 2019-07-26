@@ -1,5 +1,5 @@
 ﻿using System;
-using Cinegy.ImportTool.Infrastructure;
+using Cinegy.ImportTool.Infrastructure.Model;
 
 namespace Cinegy.ImportTool.Device
 {
@@ -7,17 +7,16 @@ namespace Cinegy.ImportTool.Device
     {
         #region Constructors
 
-        public Track()
-        {
-            
-        }
-
-        public Track(string name, TrackType type, int length)
+        public Track(string name)
         {
             if (name == null) throw new ArgumentNullException(nameof(name));
+            Name = name;
+        }
+
+        public Track(string name, TrackType type, long length) : this(name)
+        {
             if (length < 0) throw new ArgumentOutOfRangeException(nameof(length));
 
-            Name = name;
             Length = length;
 
             Type = type;
@@ -27,7 +26,7 @@ namespace Cinegy.ImportTool.Device
 
         #region Properties
 
-        public int Length { get; }
+        public long Length { get; }
 
         public string Name { get; }
 

@@ -8,7 +8,7 @@
              xmlns:ignore="http://www.galasoft.ch/ignore"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModel="clr-namespace:Cinegy.ImportTool.Device.ViewModel"
-             DataContext="{Binding Source={StaticResource Locator},
+             DataContext="{Binding Source={StaticResource Locator}, Path=ViewModels,
                                    Converter={x:Static converter:ViewModelTypeResolver.Singleton},
                                    ConverterParameter={x:Type viewModel:ExplorerViewModel}}"
              mc:Ignorable="d ignore">
@@ -22,10 +22,9 @@
         </Grid.ColumnDefinitions>
 
         <ListBox ItemsSource="{Binding ItemsSource}"
-                 SelectedItem="{Binding}"
                  SelectionMode="Single">
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="ListBox.SelectedItemChanged">
+                <i:EventTrigger EventName="SelectedItemChanged">
                     <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=SelectedCommand}"
                                         PassEventArgsToCommand="True" />
                 </i:EventTrigger>

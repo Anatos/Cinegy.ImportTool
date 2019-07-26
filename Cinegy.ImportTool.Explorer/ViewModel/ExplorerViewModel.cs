@@ -1,41 +1,19 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Autofac;
-using Cinegy.ImportTool.FileSystem.Model;
 using Cinegy.ImportTool.Infrastructure.Model;
-using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
+using Cinegy.ImportTool.FileSystem.Model;
 
 namespace Cinegy.ImportTool.FileSystem.ViewModel
 {
-    public class FileTrack : ITrack
-
-{
-        private int _length;
-        private string _name;
-        private TrackType _type;
-
-        public int Length
-        {
-            get { return _length; }
-        }
-
-        public string Name
-        {
-            get { return _name; }
-        }
-
-        public TrackType Type
-        {
-            get { return _type; }
-        }
-}
     public class ExplorerViewModel : ViewModelBase
     {
-        private readonly ILifetimeScope _scope;
         private readonly IImportService _importService;
         private RelayCommand<object> _selectedCommand;
         private TreeViewModel _treeVm = new TreeViewModel() /*ServiceLocator.Current.GetInstance<TreeViewModel>()*/;
@@ -44,16 +22,15 @@ namespace Cinegy.ImportTool.FileSystem.ViewModel
 
         public ExplorerViewModel(ILifetimeScope scope, IImportService importService)
         {
-            _scope = scope;
-
             _importService = importService;
             ItemsSource = new ObservableCollection<ITrack>();
             MessengerInstance.Register<GenericMessage<DirectoryInfo>>(this,
                 i =>
                 {
+                    ItemsSource.Clear();
                     foreach (var f in i.Content.GetFiles())
                     {
-                        ItemsSource.Add(new FileTrack());
+                        ItemsSource.Add(new FileTrack(f.FullName, TrackType.Video, f.Length));
                     }
                     
                 });
@@ -69,9 +46,12 @@ namespace Cinegy.ImportTool.FileSystem.ViewModel
         {
             get
             {
-                return _selectedCommand ?? (_selectedCommand = new RelayCommand<object>(args =>
+                return _selectedCommand ?? (_selectedCommand = new RelayCommand<object>(e =>
                 {
-                    var arg = args as ITrack;
+                    var args = e as SelectionChangedEventArgs;
+                    if (args == null) return;
+
+                    var arg = args.AddedItems[0] as ITrack;
                     if (arg != null)
                         _importService.Current = arg;
                 }));

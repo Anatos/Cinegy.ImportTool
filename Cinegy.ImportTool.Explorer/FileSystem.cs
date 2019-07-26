@@ -5,7 +5,6 @@ using Cinegy.ImportTool.FileSystem.ViewModel;
 using Cinegy.ImportTool.Infrastructure;
 using Cinegy.ImportTool.Infrastructure.Model;
 using CommonServiceLocator;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using Module = Autofac.Module;
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Autofac;
-using Cinegy.ImportTool.Infrastructure;
+using Cinegy.ImportTool.Infrastructure.Extension;
+using Cinegy.ImportTool.Infrastructure.Model;
 using GalaSoft.MvvmLight;
 
 // ReSharper disable InconsistentNaming
